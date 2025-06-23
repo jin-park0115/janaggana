@@ -1,20 +1,58 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 type ButtonProps = {
-  color: string;
   bgColor: string;
+  href?: string;
+  icon?: React.ReactNode;
   children: React.ReactNode;
 };
 
-export function Button({ children, color, bgColor }: ButtonProps) {
-  return (
-    <ButtonStyle $color={color} $backGroundColor={bgColor}>
+export function Button({ children, bgColor, icon, href }: ButtonProps) {
+  const content = (
+    <>
+      {icon && <div>{icon}</div>}
       {children}
-    </ButtonStyle>
+    </>
+  );
+
+  return href ? (
+    <StyledLink to={href} $backGroundColor={bgColor}>
+      {content}
+    </StyledLink>
+  ) : (
+    <ButtonStyle $backGroundColor={bgColor}>{content}</ButtonStyle>
   );
 }
 
-const ButtonStyle = styled.button<{ $color: string; $backGroundColor: string }>`
-  color: ${(props) => props.$color};
+const baseStyle = `
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: filter 0.3s ease;
+`;
+
+const ButtonStyle = styled.button<{ $backGroundColor: string }>`
+  ${baseStyle}
   background-color: ${(props) => props.$backGroundColor};
+
+  &:hover {
+    filter: brightness(90%);
+  }
+`;
+
+const StyledLink = styled(Link)<{ $backGroundColor: string }>`
+  ${baseStyle}
+  background-color: ${(props) => props.$backGroundColor};
+  &:hover {
+    filter: brightness(90%);
+  }
 `;
