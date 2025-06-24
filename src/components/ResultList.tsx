@@ -1,4 +1,6 @@
+import { useState } from "react";
 import styled from "styled-components";
+import { Modal } from "./Modal";
 
 type DataItem = {
   id: number;
@@ -13,27 +15,36 @@ type ResultProps = {
 };
 
 export function ResultList({ results }: ResultProps) {
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+
   return (
-    <List>
-      {results.map((item) => (
-        <Card key={item.id}>
-          <BadgeRow>
-            <Badge type>
-              {item.type === "expression" ? "생활영어" : "단어"}
-            </Badge>
-            <Badge level={item.level}>
-              {item.level === "easy"
-                ? "쉬움"
-                : item.level === "normal"
-                ? "보통"
-                : "어려움"}
-            </Badge>
-          </BadgeRow>
-          <Word>"{item.word}"</Word>
-          <Meaning>{item.meaning}</Meaning>
-        </Card>
-      ))}
-    </List>
+    <>
+      <List>
+        {results.map((item) => (
+          <Card onClick={() => setModalOpen(true)} key={item.id}>
+            <BadgeRow>
+              <Badge $type>
+                {item.type === "expression" ? "생활영어" : "단어"}
+              </Badge>
+              <Badge $level={item.level}>
+                {item.level === "easy"
+                  ? "쉬움"
+                  : item.level === "normal"
+                  ? "보통"
+                  : "어려움"}
+              </Badge>
+            </BadgeRow>
+            <Word>"{item.word}"</Word>
+            <Meaning>{item.meaning}</Meaning>
+          </Card>
+        ))}
+      </List>
+      <Modal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        mode="learn"
+      />
+    </>
   );
 }
 
@@ -44,7 +55,7 @@ const List = styled.ul`
 `;
 
 const Card = styled.li`
-  background-color: #fafafa;
+  background-color: #ededed;
   padding: 16px;
   border-radius: 10px;
   margin-bottom: 12px;
@@ -56,18 +67,18 @@ const BadgeRow = styled.div`
   margin-bottom: 8px;
 `;
 
-const Badge = styled.span<{ type?: boolean; level?: string }>`
+const Badge = styled.span<{ $type?: boolean; $level?: string }>`
   display: inline-block;
   font-size: 12px;
   padding: 4px 8px;
   border-radius: 12px;
   color: white;
-  background-color: ${({ type, level }) =>
-    type
+  background-color: ${({ $type, $level }) =>
+    $type
       ? "#f4b400"
-      : level === "easy"
+      : $level === "easy"
       ? "#57c4ad"
-      : level === "normal"
+      : $level === "normal"
       ? "#90a4ae"
       : "#ef5350"};
   @media (max-width: 450px) {

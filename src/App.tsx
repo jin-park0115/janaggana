@@ -3,6 +3,7 @@ import "./App.css";
 import { ActivityPage } from "./pages/ActivityPage";
 import { HomePage } from "./pages/HomePage";
 import { LearningPage } from "./pages/LearningPage";
+import { QuizPage } from "./pages/QuizPage";
 import { SystemPage } from "./pages/SystemPage";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/learning" element={<LearningPage />} />
+      <Route path="/quiz" element={<QuizPage />} />
       <Route path="/activity" element={<ActivityPage />} />
       <Route path="/system" element={<SystemPage />} />
     </Routes>

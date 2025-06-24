@@ -13,7 +13,7 @@ export function HomePage() {
     <Container>
       <Banner />
       <Badge />
-      <Button icon={<RiPencilFill />} bgColor="#007bff" href="/">
+      <Button icon={<RiPencilFill />} bgColor="#007bff" href="/quiz">
         문제풀기
       </Button>
       <Button icon={<BiFoodMenu />} bgColor="#28a745" href="/learning">
