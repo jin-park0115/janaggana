@@ -37,7 +37,7 @@ const mockData: DataItem[] = [
   },
 ]; // mockdata
 
-export function Learning() {
+export function LearningPage() {
   const [type, setType] = useState("all");
   const [level, setLevel] = useState("all");
   const [results, setResults] = useState<DataItem[]>([]);
@@ -91,6 +91,7 @@ export function Learning() {
           ]}
         />
       </SelectWrap>
+      <p className="result-title">총 {results.length}개 결과</p>
       <ResultList results={results} />
       <NavBar />
     </Container>
@@ -108,9 +109,21 @@ const Container = styled.div`
     text-align: center;
     color: #333;
   }
+  .result-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 450px) {
+    .result-title {
+      font-size: 0.9rem;
+    }
+  }
 `;
 const SelectWrap = styled.div`
   width: 100%;
   display: flex;
   gap: 10px;
+  margin-bottom: 1.5rem;
 `;

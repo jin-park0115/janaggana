@@ -17,11 +17,11 @@ export function NavBar() {
         <FaHome />
         <span>홈</span>
       </LinkStyle>
-      <LinkStyle to="/">
+      <LinkStyle to="/activity">
         <FaFolderOpen />
         <span>활동</span>
       </LinkStyle>
-      <LinkStyle to="/">
+      <LinkStyle to="/system">
         <IoSettings />
         <span>설정</span>
       </LinkStyle>
@@ -41,6 +41,13 @@ const NavWrap = styled.div`
   left: 0;
   z-index: 99;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.06);
+  @media (max-width: 650px) {
+    font-size: 0.9rem;
+  }
+  @media (max-width: 450px) {
+    font-size: 0.8rem;
+    font-weight: 300;
+  }
 `;
 
 const LinkStyle = styled(Link)`
@@ -49,4 +56,10 @@ const LinkStyle = styled(Link)`
   align-items: center;
   gap: 4px;
   cursor: pointer;
+  @media (max-width: 650px) {
+    svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  }
 `;

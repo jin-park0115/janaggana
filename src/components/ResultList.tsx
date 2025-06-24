@@ -70,15 +70,24 @@ const Badge = styled.span<{ type?: boolean; level?: string }>`
       : level === "normal"
       ? "#90a4ae"
       : "#ef5350"};
+  @media (max-width: 450px) {
+    font-size: 10px;
+  }
 `;
 
 const Word = styled.p`
   font-size: 20px;
   font-weight: bold;
   margin: 4px 0;
+  @media (max-width: 450px) {
+    font-size: 1rem;
+  }
 `;
 
 const Meaning = styled.p`
   font-size: 14px;
   color: #444;
+  @media (max-width: 450px) {
+    font-size: 0.8rem;
+  }
 `;
