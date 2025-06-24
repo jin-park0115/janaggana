@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { fetchWords } from "../api/words";
 import { NavBar } from "../components/NavBar";
 import { ResultList } from "../components/ResultList";
 import { SelectBox } from "../components/SelectBox";
@@ -42,29 +43,12 @@ export function LearningPage() {
   const [level, setLevel] = useState("all");
   const [results, setResults] = useState<DataItem[]>([]);
 
-  const fetchData = async () => {
-    const response = await axios.get("/mock-api", {
-      params: { type, level },
-      adapter: async (config) => {
-        const filtered = mockData.filter((item) => {
-          const matchType = type === "all" || item.type === type;
-          const matchLevel = level === "all" || item.level === level;
-          return matchType && matchLevel;
-        });
-        return {
-          data: filtered,
-          status: 200,
-          statusText: "ok",
-          headers: {},
-          config,
-        };
-      },
-    });
-    setResults(response.data);
-  };
-
   useEffect(() => {
-    fetchData();
+    const getData = async () => {
+      const data = await fetchWords(type, level);
+      setResults(data);
+    };
+    getData();
   }, [type, level]);
 
   return (
