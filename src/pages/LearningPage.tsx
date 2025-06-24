@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { fetchWords } from "../api/words";
@@ -13,30 +12,6 @@ type DataItem = {
   level: string;
   word: string;
 };
-
-const mockData: DataItem[] = [
-  {
-    id: 1,
-    meaning: "공연 전에 행운을 빈다는 뜻의 표현입니다.",
-    type: "expression",
-    level: "normal",
-    word: "Break a leg",
-  },
-  {
-    id: 2,
-    meaning: "쉽게 알 수 있는, 명백하다는 뜻입니다.",
-    type: "vocab",
-    level: "easy",
-    word: "Obvious",
-  },
-  {
-    id: 3,
-    meaning: "비가 억수로 쏟아진다는 뜻의 표현입니다.",
-    type: "expression",
-    level: "hard",
-    word: "It`s raining cats and dogs",
-  },
-]; // mockdata
 
 export function LearningPage() {
   const [type, setType] = useState("all");
