@@ -1,7 +1,7 @@
 import { NavBar } from "../components/NavBar";
 import { Banner } from "../components/Banner";
 import { Badge } from "../components/Badge";
-import { Button } from "../components/ui/Button";
+import { HomeButton } from "../components/ui/ui_button/HomeButton";
 import { RiPencilFill } from "react-icons/ri";
 import { BiFoodMenu } from "react-icons/bi";
 import { RiRepeat2Line } from "react-icons/ri";
@@ -13,15 +13,15 @@ export function HomePage() {
     <Container>
       <Banner />
       <Badge />
-      <Button icon={<RiPencilFill />} bgColor="#007bff" href="/quiz">
+      <HomeButton icon={<RiPencilFill />} bgColor="#007bff" href="/quiz">
         문제풀기
-      </Button>
-      <Button icon={<BiFoodMenu />} bgColor="#28a745" href="/learning">
+      </HomeButton>
+      <HomeButton icon={<BiFoodMenu />} bgColor="#28a745" href="/learning">
         학습하기
-      </Button>
-      <Button icon={<RiRepeat2Line />} bgColor="#ffc107">
+      </HomeButton>
+      <HomeButton icon={<RiRepeat2Line />} bgColor="#ffc107">
         복습하기
-      </Button>
+      </HomeButton>
       <NavBar />
     </Container>
   );

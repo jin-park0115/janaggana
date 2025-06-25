@@ -8,7 +8,7 @@ type ButtonProps = {
   children: React.ReactNode;
 };
 
-export function Button({ children, bgColor, icon, href }: ButtonProps) {
+export function HomeButton({ children, bgColor, icon, href }: ButtonProps) {
   const content = (
     <>
       {icon && <div>{icon}</div>}
@@ -37,11 +37,12 @@ const baseStyle = `
   font-size: 1rem;
   cursor: pointer;
   text-decoration: none;
-  transition: filter 0.3s ease;
 `;
 
 const ButtonStyle = styled.button<{ $backGroundColor: string }>`
   ${baseStyle}
+  transition: filter 0.3s ease;
+
   background-color: ${(props) => props.$backGroundColor};
 
   &:hover {
@@ -51,6 +52,8 @@ const ButtonStyle = styled.button<{ $backGroundColor: string }>`
 
 const StyledLink = styled(Link)<{ $backGroundColor: string }>`
   ${baseStyle}
+  transition: filter 0.3s ease;
+
   background-color: ${(props) => props.$backGroundColor};
   &:hover {
     filter: brightness(90%);
