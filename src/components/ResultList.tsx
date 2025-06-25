@@ -59,6 +59,7 @@ const Card = styled.li`
   padding: 16px;
   border-radius: 10px;
   margin-bottom: 12px;
+  cursor: pointer;
 `;
 
 const BadgeRow = styled.div`

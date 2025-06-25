@@ -1,18 +1,31 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { NavBar } from "../components/NavBar";
 
 export function SystemPage() {
+  const [login, setLogin] = useState<boolean>(false);
+  console.log(setLogin);
   return (
     <Container>
       <h2>설정</h2>
       <UserInfoStyle>
-        <UserInfoWrap>
-          <ProfileStyle>이미지</ProfileStyle>
-          <TitleStyle>
-            <p className="user-name">이름</p>
-            <p className="user-modify">프로필 수정하기</p>
-          </TitleStyle>
-        </UserInfoWrap>
+        {login ? (
+          <UserInfoWrap>
+            <ProfileStyle>이미지</ProfileStyle>
+            <TitleStyle>
+              <p className="user-name">이름</p>
+              <p className="user-modify">프로필 수정하기</p>
+            </TitleStyle>
+          </UserInfoWrap>
+        ) : (
+          <UserInfoWrap>
+            <GoLogin to="/login">
+              <p>로그인 하러가기</p>
+            </GoLogin>
+          </UserInfoWrap>
+        )}
+
         <InfoWrap>
           <Info>선생님 소개</Info>
           <Info>1 : 1문의</Info>
@@ -74,6 +87,7 @@ const InfoWrap = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+
   @media (max-width: 505px) {
     border: 1px solid #222;
     background: #222;
@@ -87,15 +101,20 @@ const InfoWrap = styled.div`
 `;
 
 const Info = styled.div`
-  padding: 14px;
-  font-size: 1.1rem;
+  padding: 10px;
+  font-size: 0.9rem;
   display: flex;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #d3d1d1;
   @media (max-width: 505px) {
     padding: 8px;
-    border-radius: 6px;
+    border-radius: 4px;
     font-size: 0.7rem;
   }
+`;
+
+const GoLogin = styled(Link)`
+  width: 100%;
+  font-size: 1.1rem;
 `;
