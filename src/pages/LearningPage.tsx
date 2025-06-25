@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { fetchWords } from "../api/words";
 import { NavBar } from "../components/NavBar";
-import { ResultList } from "../components/ResultList";
+import { WordsList } from "../components/WordsList";
 import { SelectBox } from "../components/SelectBox";
 
 type DataItem = {
@@ -20,7 +20,7 @@ export function LearningPage() {
 
   useEffect(() => {
     const getData = async () => {
-      const data = await fetchWords(type, level);
+      const data = await fetchWords(type, level); //mock api에서 받아온 단어들
       setResults(data);
     };
     getData();
@@ -51,7 +51,7 @@ export function LearningPage() {
         />
       </SelectWrap>
       <p className="result-title">총 {results.length}개 결과</p>
-      <ResultList results={results} />
+      <WordsList results={results} />
       <NavBar />
     </Container>
   );

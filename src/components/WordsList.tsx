@@ -14,7 +14,7 @@ type ResultProps = {
   results: DataItem[];
 };
 
-export function ResultList({ results }: ResultProps) {
+export function WordsList({ results }: ResultProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   return (
