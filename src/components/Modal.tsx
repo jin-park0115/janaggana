@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import styled from "styled-components";
+import { DataItem } from "../api/words";
 
 type Mode = "learn" | "quiz";
 
@@ -7,9 +8,10 @@ type ModalProps = {
   isOpen?: boolean;
   onClose?: () => void;
   mode?: Mode;
+  wordData?: DataItem | null;
 };
 
-export function Modal({ isOpen, onClose, mode }: ModalProps) {
+export function Modal({ isOpen, onClose, mode, wordData }: ModalProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -38,14 +40,8 @@ export function Modal({ isOpen, onClose, mode }: ModalProps) {
                 </ModalCategory>
                 <ModalImg>이미지</ModalImg>
                 <ModalWordsWrap>
-                  <div className="word">"단어"</div>
-                  <div className="meaning">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Amet ex repudiandae dignissimos exercitationem hic neque,
-                    obcaecati veritatis mollitia incidunt est consequatur
-                    laudantium labore impedit aliquam, sint architecto voluptas
-                    quasi dolorem.
-                  </div>
+                  <div className="word">"{wordData?.word}"</div>
+                  <div className="meaning">{wordData?.meaning}</div>
                   <div className="example">
                     예시: Lorem ipsum dolor sit, amet consectetur adipisicing
                     elit. Aut, dolores maxime corrupti eum illo optio voluptatem

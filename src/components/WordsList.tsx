@@ -1,14 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { DataItem } from "../api/words";
 import { Modal } from "./Modal";
-
-type DataItem = {
-  id: number;
-  word: string;
-  meaning: string;
-  type: string;
-  level: string;
-};
 
 type ResultProps = {
   results: DataItem[];
@@ -16,12 +9,19 @@ type ResultProps = {
 
 export function WordsList({ results }: ResultProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [selectedWord, setSelectedWord] = useState<DataItem | null>(null);
 
   return (
     <>
       <List>
         {results.map((item) => (
-          <Card onClick={() => setModalOpen(true)} key={item.id}>
+          <Card
+            onClick={() => {
+              setSelectedWord(item); //클릭시 저장되는
+              setModalOpen(true);
+            }}
+            key={item.id}
+          >
             <BadgeRow>
               <Badge $type>
                 {item.type === "expression" ? "생활영어" : "단어"}
@@ -43,6 +43,7 @@ export function WordsList({ results }: ResultProps) {
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         mode="learn"
+        wordData={selectedWord}
       />
     </>
   );

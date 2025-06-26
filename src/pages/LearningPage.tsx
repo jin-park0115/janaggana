@@ -4,19 +4,13 @@ import { fetchWords } from "../api/words";
 import { NavBar } from "../components/NavBar";
 import { WordsList } from "../components/WordsList";
 import { SelectBox } from "../components/SelectBox";
-
-type DataItem = {
-  id: number;
-  meaning: string;
-  type: string;
-  level: string;
-  word: string;
-};
+import { useWordsStore } from "../store/wordStore";
 
 export function LearningPage() {
   const [type, setType] = useState("all");
   const [level, setLevel] = useState("all");
-  const [results, setResults] = useState<DataItem[]>([]);
+
+  const { results, setResults } = useWordsStore();
 
   useEffect(() => {
     const getData = async () => {
@@ -24,7 +18,7 @@ export function LearningPage() {
       setResults(data);
     };
     getData();
-  }, [type, level]);
+  }, [type, level, setResults]);
 
   return (
     <Container>
