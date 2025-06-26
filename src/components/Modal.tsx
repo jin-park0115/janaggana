@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import { DataItem } from "../api/words";
+import { DataItem } from "../type/DataItemType";
 
 type Mode = "learn" | "quiz";
 
@@ -35,8 +35,8 @@ export function Modal({ isOpen, onClose, mode, wordData }: ModalProps) {
               <h2>학습하기</h2>
               <ModalItem>
                 <ModalCategory>
-                  <p className="category">카테고리</p>
-                  <p className="category">타입</p>
+                  <p className="category">{wordData?.type}</p>
+                  <p className="category">{wordData?.level}</p>
                 </ModalCategory>
                 <ModalImg>이미지</ModalImg>
                 <ModalWordsWrap>

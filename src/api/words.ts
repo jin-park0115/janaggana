@@ -1,12 +1,5 @@
 import axios from "axios";
-
-export type DataItem = {
-  id: number;
-  word: string;
-  meaning: string;
-  type: string;
-  level: string;
-};
+import { DataItem } from "../type/DataItemType";
 
 const mockData: DataItem[] = [
   {

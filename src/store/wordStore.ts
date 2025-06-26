@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { DataItem } from "../api/words";
+import { DataItem } from "../type/DataItemType";
 
 type WordsState = {
   results: DataItem[];

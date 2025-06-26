@@ -1,13 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { DataItem } from "../api/words";
+import { useWordsStore } from "../store/wordStore";
+import { DataItem } from "../type/DataItemType";
 import { Modal } from "./Modal";
 
-type ResultProps = {
-  results: DataItem[];
-};
-
-export function WordsList({ results }: ResultProps) {
+export function WordsList() {
+  const { results } = useWordsStore(); //zustand stroe에서 가져옴
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedWord, setSelectedWord] = useState<DataItem | null>(null);
 
