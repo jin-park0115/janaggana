@@ -16,7 +16,8 @@ export function LoginPage() {
   const [password, setPassword] = useState<string>("");
   const setUser = useUserStore((state) => state.setUser);
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -38,7 +39,7 @@ export function LoginPage() {
         <IoArrowBackCircleOutline />
       </BackArrow>
       <h1>로그인</h1>
-      <LoginForm>
+      <LoginForm onSubmit={handleLogin}>
         <LoginStyle>
           <LogintInput
             type="email"
@@ -57,7 +58,7 @@ export function LoginPage() {
         </PasswordStyle>
 
         <LoginWrap>
-          <LoginButton $bgColor="#4f73d9" onClick={handleLogin}>
+          <LoginButton $bgColor="#4f73d9" type="submit">
             Login
           </LoginButton>
         </LoginWrap>
@@ -111,7 +112,7 @@ const BackArrow = styled(Link)`
   cursor: pointer;
 `;
 
-const LoginForm = styled.div`
+const LoginForm = styled.form`
   width: 100%;
   ${baseStyle}
   justify-content: center;
