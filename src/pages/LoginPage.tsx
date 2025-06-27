@@ -3,9 +3,35 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { LoginButton } from "../components/ui/ui_button/LoginButton";
 import { SocialButton } from "../components/ui/ui_button/SocialButton";
 import { LogintInput } from "../components/ui/ui_input/LoginInput";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../fiebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
+import { useState } from "react";
+import { useUserStore } from "../store/userStore";
 
 export function LoginPage() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const setUser = useUserStore((state) => state.setUser);
+
+  const handleLogin = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      setUser(user);
+      alert("로그인 완료");
+      navigate("/");
+    } catch (error) {
+      alert("로그인 실패");
+    }
+  };
+
   return (
     <Container>
       <BackArrow to="/">
@@ -18,6 +44,7 @@ export function LoginPage() {
             type="email"
             placeholder="이메일 입력해주세요"
             id="아이디"
+            onEmailPW={(e) => setEmail(e.target.value)}
           />
         </LoginStyle>
         <PasswordStyle>
@@ -25,11 +52,14 @@ export function LoginPage() {
             type="password"
             id="비밀번호"
             placeholder="비밀번호를 입력해주세요."
+            onEmailPW={(e) => setPassword(e.target.value)}
           />
         </PasswordStyle>
 
         <LoginWrap>
-          <LoginButton $bgColor="#4f73d9">Login</LoginButton>
+          <LoginButton $bgColor="#4f73d9" onClick={handleLogin}>
+            Login
+          </LoginButton>
         </LoginWrap>
       </LoginForm>
 

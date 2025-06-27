@@ -1,13 +1,27 @@
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import { auth } from "./fiebase";
 import { ActivityPage } from "./pages/ActivityPage";
 import { HomePage } from "./pages/HomePage";
 import { LearningPage } from "./pages/LearningPage";
 import { LoginPage } from "./pages/LoginPage";
 import { QuizPage } from "./pages/QuizPage";
 import { SystemPage } from "./pages/SystemPage";
+import { useUserStore } from "./store/userStore";
 
 function App() {
+  const setUser = useUserStore((set) => set.setUser);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe();
+  }, [setUser]);
+
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />

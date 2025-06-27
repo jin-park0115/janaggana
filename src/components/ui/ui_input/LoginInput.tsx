@@ -1,16 +1,23 @@
+import React from "react";
 import styled from "styled-components";
 
 type InputProps = {
   type: string;
   id: string;
   placeholder: string;
+  onEmailPW: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const LogintInput = ({ type, placeholder, id }: InputProps) => {
+export const LogintInput = ({
+  type,
+  placeholder,
+  id,
+  onEmailPW,
+}: InputProps) => {
   return (
     <>
       <LabelStyle>{id}</LabelStyle>
-      <InputStyle type={type} placeholder={placeholder} />
+      <InputStyle type={type} placeholder={placeholder} onChange={onEmailPW} />
     </>
   );
 };

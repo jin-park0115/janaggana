@@ -1,22 +1,26 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Logout } from "../components/Logout";
 import { NavBar } from "../components/NavBar";
+import { useUserStore } from "../store/userStore";
 
 export function SystemPage() {
-  const [login, setLogin] = useState<boolean>(false);
-  console.log(setLogin);
+  const user = useUserStore((state) => state.user);
+
   return (
     <Container>
       <h2>설정</h2>
       <UserInfoStyle>
-        {login ? (
+        {user ? (
           <UserInfoWrap>
-            <ProfileStyle>이미지</ProfileStyle>
-            <TitleStyle>
-              <p className="user-name">이름</p>
-              <p className="user-modify">프로필 수정하기</p>
-            </TitleStyle>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <ProfileStyle>이미지</ProfileStyle>
+              <TitleStyle>
+                <p className="user-name">{user.displayName || "홍길동님"}</p>
+                <p className="user-modify">프로필 수정하기</p>
+              </TitleStyle>
+            </div>
+            <Logout />
           </UserInfoWrap>
         ) : (
           <UserInfoWrap>
@@ -53,6 +57,7 @@ const UserInfoStyle = styled.div`
 
 const UserInfoWrap = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   background-color: #f9f9f9;
