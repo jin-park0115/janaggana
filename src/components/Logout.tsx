@@ -7,6 +7,9 @@ export function Logout() {
   const setUser = useUserStore((set) => set.setUser);
 
   const handleLogout = async () => {
+    const confirmed = window.confirm("정말 로그아웃 하시겠습니까?");
+    if (!confirmed) return;
+
     try {
       await signOut(auth); // firebase로그아웃
       setUser(null); //zustand 비우기
