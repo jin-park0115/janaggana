@@ -59,3 +59,9 @@ cd your-project
 npm install
 npm run dev
 ```
+---
+
+## 🔑 테스트 로그인
+
+ID : test1@gmail.com
+PASSWORD : 123456789
