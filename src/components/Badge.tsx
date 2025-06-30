@@ -1,15 +1,15 @@
 // import { useState } from "react";
 import styled from "styled-components";
+import { useUserStore } from "../store/userStore";
 
 export function Badge() {
-  // const [name, setName] = useState("홍길동");
-
+  const user = useUserStore((state) => state.user);
   return (
     <>
       <BadgeWrap>
         <div>🏆</div>
         <User>
-          <p>님의 뱃지</p>
+          <p>{user ? user.email : "홍길동"}님의 뱃지</p>
           <span>오늘도 화이팅!</span>
         </User>
       </BadgeWrap>

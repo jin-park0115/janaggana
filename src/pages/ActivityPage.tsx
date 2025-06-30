@@ -1,11 +1,14 @@
 import activityBoy from "../assets/janaggana_character.png";
 import styled from "styled-components";
 import { NavBar } from "../components/NavBar";
+import { useUserStore } from "../store/userStore";
 
 export function ActivityPage() {
+  const user = useUserStore((state) => state.user);
+
   return (
     <Container>
-      <h2>의 학습활동</h2>
+      <h2>{user ? user.email : "홍길동 "}님의 학습활동</h2>
       <SummaryWrap>
         <img className="activity-boy" src={activityBoy} alt="활동 캐릭터" />
         <div className="summary-container">

@@ -38,7 +38,7 @@ export function LoginPage() {
       <BackArrow to="/">
         <IoArrowBackCircleOutline />
       </BackArrow>
-      <h1>로그인</h1>
+      <h1>Login</h1>
       <LoginForm onSubmit={handleLogin}>
         <LoginStyle>
           <LogintInput
@@ -98,8 +98,22 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 10px 20px 0px 20px;
   gap: 20px;
+  h1 {
+    color: #8dabfb;
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
   @media (max-width: 500px) {
     width: 100%;
+    h1 {
+      font-size: 1.6rem;
+    }
+  }
+  @media (max-width: 430px) {
+    width: 100%;
+    h1 {
+      font-size: 1.4rem;
+    }
   }
 `;
 

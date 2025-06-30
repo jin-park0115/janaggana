@@ -103,6 +103,9 @@ const InfoWrap = styled.div`
     bottom: 60px;
     left: 0;
   }
+  @media (max-width: 320px) {
+    padding: 6px;
+  }
 `;
 
 const Info = styled.div`

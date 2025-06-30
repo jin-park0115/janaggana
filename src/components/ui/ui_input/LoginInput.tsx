@@ -36,7 +36,7 @@ const InputStyle = styled.input`
   background: none;
   padding: 4px 12px;
   opacity: 0.8;
-  font-size: 12px;
+  font-size: 0.9rem;
   &:focus {
     outline: none;
   }
