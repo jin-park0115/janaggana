@@ -52,7 +52,6 @@ export function LoginPage() {
       <BackArrow to="/">
         <IoArrowBackCircleOutline />
       </BackArrow>
-      <h1>Login</h1>
       <LoginForm onSubmit={handleLogin}>
         <LoginStyle>
           <LogintInput
@@ -130,13 +129,14 @@ const Container = styled.div`
   }
   @media (max-width: 500px) {
     width: 100%;
-    height: 50vh;
+    height: 70vh;
     h1 {
       font-size: 1.6rem;
     }
   }
   @media (max-width: 430px) {
     width: 100%;
+    height: 75vh;
     h1 {
       font-size: 1.4rem;
     }
@@ -144,23 +144,11 @@ const Container = styled.div`
 `;
 
 const BackArrow = styled(Link)`
-  position: absolute;
-  top: 26%;
-  left: 34%;
+  width: 100%;
+  display: flex;
   color: #8dabfb;
   font-size: 2rem;
   cursor: pointer;
-  @media (max-width: 1024px) {
-    top: 28%;
-    left: 29%;
-  }
-  @media (max-width: 768px) {
-    left: 16%;
-  }
-  @media (max-width: 500px) {
-    left: 3%;
-    top: 1%;
-  }
 `;
 
 const LoginForm = styled.form`
