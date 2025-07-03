@@ -13,6 +13,7 @@ import { FcGoogle } from "react-icons/fc";
 
 import { useState } from "react";
 import { useUserStore } from "../store/userStore";
+import Swal from "sweetalert2";
 
 export function LoginPage() {
   const navigate = useNavigate();
@@ -30,10 +31,19 @@ export function LoginPage() {
       );
       const user = userCredential.user;
       setUser(user);
-      alert("로그인 완료");
+      Swal.fire({
+        title: "로그인 완료",
+        icon: "success",
+        confirmButtonText: "확인",
+      });
       navigate("/");
     } catch (error) {
-      alert("로그인 실패");
+      Swal.fire({
+        title: "로그인 실패",
+        icon: "error",
+        confirmButtonText: "확인",
+      });
+      console.error(error);
     }
   };
 
