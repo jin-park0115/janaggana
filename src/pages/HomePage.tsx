@@ -13,13 +13,13 @@ export function HomePage() {
     <Container>
       <Banner />
       <Badge />
-      <HomeButton icon={<RiPencilFill />} bgColor="#007bff" href="/quiz">
+      <HomeButton icon={<RiPencilFill />} bgColor="#007bff" href="/404">
         문제풀기
       </HomeButton>
       <HomeButton icon={<BiFoodMenu />} bgColor="#28a745" href="/learning">
         학습하기
       </HomeButton>
-      <HomeButton icon={<RiRepeat2Line />} bgColor="#ffc107">
+      <HomeButton icon={<RiRepeat2Line />} bgColor="#ffc107" href="/404">
         복습하기
       </HomeButton>
       <NavBar />
