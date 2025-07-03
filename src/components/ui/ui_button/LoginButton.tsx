@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const LoginButton = styled.button<{ $bgColor?: string }>`
   font-size: 1rem;
-  width: 200px;
+  width: 100%;
   height: 30px;
   border: none;
   border-radius: 10px;

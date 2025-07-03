@@ -7,6 +7,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../fiebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
+import { SiNaver } from "react-icons/si";
+import { SiKakaotalk } from "react-icons/si";
+import { FcGoogle } from "react-icons/fc";
+
 import { useState } from "react";
 import { useUserStore } from "../store/userStore";
 
@@ -66,19 +70,22 @@ export function LoginPage() {
 
       <SocialForm>
         <SocialBtnWrap>
+          <SocialButton to="/" $bgColor="#03C75A" $boxShadowRGB="3, 199, 90">
+            <SiNaver />
+            네이버로 로그인
+          </SocialButton>
           <SocialButton
             to="/"
             $bgColor="#FEE500"
             $color="#222"
             $boxShadowRGB="254, 229, 0"
           >
-            카카오로 시작하기
-          </SocialButton>
-          <SocialButton to="/" $bgColor="#03C75A" $boxShadowRGB="3, 199, 90">
-            네이버로 시작하기
+            <SiKakaotalk />
+            카카오로 로그인
           </SocialButton>
           <SocialButton to="/" $bgColor="#4285F4" $boxShadowRGB="66, 133, 244">
-            구글로 시작하기
+            <FcGoogle />
+            구글 로그인
           </SocialButton>
         </SocialBtnWrap>
       </SocialForm>
@@ -94,7 +101,9 @@ const baseStyle = `
 const Container = styled.div`
   ${baseStyle}
   align-items: center;
-  width: 80%;
+  justify-content: center;
+  width: 30%;
+  height: 100vh;
   margin: 0 auto;
   padding: 10px 20px 0px 20px;
   gap: 20px;
@@ -103,8 +112,15 @@ const Container = styled.div`
     margin-bottom: 1rem;
     font-weight: 400;
   }
+  @media (max-width: 1024px) {
+    width: 45%;
+  }
+  @media (max-width: 768px) {
+    width: 70%;
+  }
   @media (max-width: 500px) {
     width: 100%;
+    height: 50vh;
     h1 {
       font-size: 1.6rem;
     }
@@ -119,18 +135,29 @@ const Container = styled.div`
 
 const BackArrow = styled(Link)`
   position: absolute;
-  top: 10px;
-  left: 13%;
+  top: 26%;
+  left: 34%;
   color: #8dabfb;
   font-size: 2rem;
   cursor: pointer;
+  @media (max-width: 1024px) {
+    top: 28%;
+    left: 29%;
+  }
+  @media (max-width: 768px) {
+    left: 16%;
+  }
+  @media (max-width: 500px) {
+    left: 3%;
+    top: 1%;
+  }
 `;
 
 const LoginForm = styled.form`
   width: 100%;
   ${baseStyle}
   justify-content: center;
-  padding: 4px 12px;
+  padding: 4px 0px;
   gap: 14px;
   margin-bottom: 1.5rem;
 `;
